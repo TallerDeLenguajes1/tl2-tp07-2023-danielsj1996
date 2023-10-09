@@ -9,10 +9,11 @@ public class TareasController : ControllerBase
 
     private ManejodeTareas manejodeTareas;
     private readonly ILogger<TareasController> _logger;
-    private Tarea tarea;
+  
     public TareasController(ILogger<TareasController> logger)
     {
         _logger = logger;
+        AccesoADatos acceso=new AccesoADatos();
         manejodeTareas = new ManejodeTareas();
 
 
@@ -21,13 +22,13 @@ public class TareasController : ControllerBase
     [HttpPost("Nueva Tarea")]
     public ActionResult<Tarea> AgregarTarea(Tarea tarea)
     {
-        if (tarea == null)
+        var t=manejodeTareas.NuevaTarea(tarea);
+        if (t == null)
         {
             return BadRequest("No se pudo tomar el pedido");
         }
         else
         {
-            manejodeTareas.NuevaTarea(tarea);
             return Ok("Tarea Agregado Exitosamente");
         }
 
@@ -96,7 +97,7 @@ public class TareasController : ControllerBase
         if (tareaCompletadas != null)
         {
 
-            return Ok(tarea);
+            return Ok(tareaCompletadas);
         }
         else
         {

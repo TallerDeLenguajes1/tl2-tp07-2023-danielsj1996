@@ -469,7 +469,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mama\\.nuget\\packages\\": {}
+    "C:\\Users\\Daniels\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -477,11 +477,11 @@
       "projectUniqueName": "C:\\tl2-tp07-2023-danielsj1996\\tl2-tp07-2023-danielsj1996.csproj",
       "projectName": "tl2-tp07-2023-danielsj1996",
       "projectPath": "C:\\tl2-tp07-2023-danielsj1996\\tl2-tp07-2023-danielsj1996.csproj",
-      "packagesPath": "C:\\Users\\mama\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Daniels\\.nuget\\packages\\",
       "outputPath": "C:\\tl2-tp07-2023-danielsj1996\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mama\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Daniels\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

@@ -2,7 +2,6 @@ namespace WebApi;
 public enum Estado
 {
      Pendiente,
-
     En_Progreso,
     Completada
 
@@ -10,8 +9,8 @@ public enum Estado
 public class Tarea
 {
     private int id;
-    private string titulo;
-    private string descripcion;
+    private string? titulo;
+    private string? descripcion;
     private Estado estado;
 
     public int Id { get => id; set => id = value; }

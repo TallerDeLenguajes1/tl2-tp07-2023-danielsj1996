@@ -4,29 +4,33 @@ namespace WebApi;
 
 public class ManejodeTareas
 {
-    private AccesoAJson AccesoaDatos;
     public static int generdador = 0;
+    private AccesoADatos AccesoaDatos;
 
-    public void NuevaTarea(Tarea tarea)
+    public Tarea NuevaTarea(Tarea nuevaTarea)
     {
-        var nuevaTarea = new Tarea();
-        nuevaTarea.Id = generdador++;
-        List<Tarea> tareas = AccesoaDatos.ObtenerListaTarea("ListadeTareas.json");
+        AccesoaDatos = new AccesoADatos();
+        var tareas = AccesoaDatos.ObtenerListaTarea();
+        var id = tareas.Count;
+        nuevaTarea.Id = id+generdador++;
         tareas.Add(nuevaTarea);
         AccesoaDatos.GuardarLista(tareas);
+        return nuevaTarea;
     }
 
 
     public Tarea ObtenerTareaId(int idTarea)
     {
-        var listadeTareas = AccesoaDatos.ObtenerListaTarea("ListadeTareas.json");
+        AccesoaDatos = new AccesoADatos();
+        var listadeTareas = AccesoaDatos.ObtenerListaTarea();
         Tarea tarea = listadeTareas.FirstOrDefault(tar => tar.Id == idTarea);
         return tarea;
     }
 
     public void ActualizarTarea(Tarea actualizarTarea)
     {
-        List<Tarea> listadeTareas = AccesoaDatos.ObtenerListaTarea("ListadeTareas.json");
+        AccesoaDatos = new AccesoADatos();
+        List<Tarea> listadeTareas = AccesoaDatos.ObtenerListaTarea();
         int indice = listadeTareas.FindIndex(t => t.Id == actualizarTarea.Id);
 
         if (indice >= 0)
@@ -37,7 +41,8 @@ public class ManejodeTareas
     }
     public void EliminarTarea(Tarea tareaAEliminar)
     {
-        var listadeTareas = AccesoaDatos.ObtenerListaTarea("ListadeTareas.json");
+        AccesoaDatos = new AccesoADatos();
+        var listadeTareas = AccesoaDatos.ObtenerListaTarea();
         Tarea tarea = listadeTareas.FirstOrDefault(tar => tar.Id == tareaAEliminar.Id);
         if (tarea != null)
         {
@@ -50,12 +55,13 @@ public class ManejodeTareas
     public List<Tarea> ObtenerListaTareas()
     {
 
-        return AccesoaDatos.ObtenerListaTarea("ListadeTareas.json");
+        return AccesoaDatos.ObtenerListaTarea();
     }
 
     public List<Tarea> ObtenerListaTareasCompletadas()
     {
-        var listadeTareas = AccesoaDatos.ObtenerListaTarea("ListadeTareas.json");
+        AccesoaDatos = new AccesoADatos();
+        var listadeTareas = AccesoaDatos.ObtenerListaTarea();
         return listadeTareas.Where(tar => tar.Estado == Estado.Completada).ToList();
     }
 }
